@@ -3,11 +3,12 @@
     "type": "wordpress",
     "license": "GPL-2.0-or-later",
     "require-dev": {
+        "php": ">=8.3",
         "phpunit/phpunit": "^9.5.24",
         "yoast/phpunit-polyfills": "^1.0.3",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
-        "wp-coding-standards/wpcs" : "^3.0"
+        "wp-coding-standards/wpcs": "^3.0"
     },
     "config": {
         "allow-plugins": {

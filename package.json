@@ -12,6 +12,7 @@
     "scripts": {
         "test": "npx playwright test",
         "up": "WP_ENV_HOME=wp-env-home wp-env start",
+        "down": "WP_ENV_HOME=wp-env-home wp-env stop",
         "wp-env": "WP_ENV_HOME=wp-env-home wp-env",
         "cli": "WP_ENV_HOME=wp-env-home wp-env run cli bash",
         "bash": "WP_ENV_HOME=wp-env-home wp-env run wordpress bash"
