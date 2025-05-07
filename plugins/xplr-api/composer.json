@@ -1,0 +1,20 @@
+{
+    "name": "xplr/api",
+    "description": "A collection of custom API endpoints for xplr",
+    "type": "wordpress-plugin",
+    "license": "PRIVATE",
+    "autoload": {
+        "psr-4": {
+            "Xplr\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Verron Knowles",
+            "email": "verron.knowles@develme.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^7.2"
+    }
+}
