@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "xplr/example-one",
+	"version": "0.1.0",
+	"title": "Example One",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "example-one",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Example Description"
+        },
+        "description": {
+            "type": "string",
+            "default": "This is an example block description."
+        },
+        "image": {
+            "type": "string",
+            "default": ""
+        }
+    }
+}

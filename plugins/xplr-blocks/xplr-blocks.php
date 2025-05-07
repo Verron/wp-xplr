@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 
- /*
+/*
 Plugin Name: Xplr Blocks
 Description: A collection of custom blocks for Xplr.
 Author: Verron Knowles
@@ -20,19 +20,38 @@ Author: Verron Knowles
 
  add_action('admin_notices', 'wp_blocks_notice');
 
- function load_blocks()
- {
-  $directory = plugin_dir_path(__FILE__) . 'blocks/';
+ function xplr_boostrap_blocks_init() {
+	/**
+	 * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
+	 * based on the registered block metadata.
+	 * Added in WordPress 6.8 to simplify the block metadata registration process added in WordPress 6.7.
+	 *
+	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
+	 */
+	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
+		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+		return;
+	}
 
-  $blocks = glob($directory . '**', GLOB_ONLYDIR);
+	/**
+	 * Registers the block(s) metadata from the `blocks-manifest.php` file.
+	 * Added to WordPress 6.7 to improve the performance of block type registration.
+	 *
+	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
+	 */
+	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
+		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+	}
+	/**
+	 * Registers the block type(s) in the `blocks-manifest.php` file.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
+	 */
+	$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
 
-  if ($blocks) {
-    foreach ($blocks as $block) {
-      if (file_exists($block) && file_exists($block . '/block.json')) {
-        register_block_type($block);
-      }
-    }
-  }
- }
+	foreach ( array_keys( $manifest_data ) as $block_type ) {
+		register_block_type( __DIR__ . "/build/{$block_type}" );
+	}
+}
 
- add_action('init', 'load_blocks');
+ add_action('init', 'xplr_boostrap_blocks_init');
