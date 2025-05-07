@@ -15,7 +15,8 @@
         "down": "WP_ENV_HOME=wp-env-home wp-env stop",
         "wp-env": "WP_ENV_HOME=wp-env-home wp-env",
         "cli": "WP_ENV_HOME=wp-env-home wp-env run cli bash",
-        "bash": "WP_ENV_HOME=wp-env-home wp-env run wordpress bash"
+        "bash": "WP_ENV_HOME=wp-env-home wp-env run wordpress bash",
+        "composer": "WP_ENV_HOME=wp-env-home wp-env run cli composer"
     },
     "config": {}
 }
